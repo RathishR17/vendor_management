@@ -5,7 +5,7 @@ Develop a Vendor Management System using Django and Django REST Framework. This
 system will handle vendor profiles, track purchase orders, and calculate vendor performance
 metrics.
 Core Features
-1. Vendor Profile Management:
+**1. Vendor Profile Management:**
 ● Model Design: Create a model to store vendor information including name, contact
 details, address, and a unique vendor code.
 ● API Endpoints:
@@ -14,7 +14,7 @@ details, address, and a unique vendor code.
 ● GET /api/vendors/{vendor_id}/: Retrieve a specific vendor's details.
 ● PUT /api/vendors/{vendor_id}/: Update a vendor's details.
 ● DELETE /api/vendors/{vendor_id}/: Delete a vendor.
-2. Purchase Order Tracking:
+**2. Purchase Order Tracking:**
 ● Model Design: Track purchase orders with fields like PO number, vendor reference,
 order date, items, quantity, and status.
 ● API Endpoints:
@@ -24,7 +24,7 @@ vendor.
 ● GET /api/purchase_orders/{po_id}/: Retrieve details of a specific purchase order.
 ● PUT /api/purchase_orders/{po_id}/: Update a purchase order.
 ● DELETE /api/purchase_orders/{po_id}/: Delete a purchase order.
-3. Vendor Performance Evaluation:
+**3. Vendor Performance Evaluation:**
 ● Metrics:
 ● On-Time Delivery Rate: Percentage of orders delivered by the promised date.
 ● Quality Rating: Average of quality ratings given to a vendor’s purchase orders.
@@ -35,8 +35,8 @@ purchase orders.
 ● API Endpoints:
 ● GET /api/vendors/{vendor_id}/performance: Retrieve a vendor's performance
 metrics.
-Data Models
-1. Vendor Model
+**Data Models**
+**1. Vendor Model**
 This model stores essential information about each vendor and their performance metrics.
 ● Fields:
 ● name: CharField - Vendor's name.
@@ -49,7 +49,7 @@ orders.
 ● average_response_time: FloatField - Average time taken to acknowledge
 purchase orders.
 ● fulfillment_rate: FloatField - Percentage of purchase orders fulfilled successfully.
-2. Purchase Order (PO) Model
+**2. Purchase Order (PO) Model**
 This model captures the details of each purchase order and is used to calculate various
 performance metrics.
 ● Fields:
@@ -64,7 +64,7 @@ performance metrics.
 ● issue_date: DateTimeField - Timestamp when the PO was issued to the vendor.
 ● acknowledgment_date: DateTimeField, nullable - Timestamp when the vendor
 acknowledged the PO.
-3. Historical Performance Model
+**3. Historical Performance Model**
 This model optionally stores historical data on vendor performance, enabling trend analysis.
 ● Fields:
 ● vendor: ForeignKey - Link to the Vendor model.
@@ -107,29 +107,19 @@ POST /api/purchase_orders/{po_id}/acknowledge for vendors to acknowledge
 POs.
 ● This endpoint will update acknowledgment_date and trigger the recalculation
 of average_response_time.
-Additional Technical Considerations
-● Efficient Calculation: Ensure that the logic for calculating metrics is optimised to
-handle large datasets without significant performance issues.
-● Data Integrity: Include checks to handle scenarios like missing data points or division
-by zero in calculations.
-● Real-time Updates: Consider using Django signals to trigger metric updates in
-real-time when related PO data is modified.
-Technical Requirements
-● Use the latest stable version of Django and Django REST Framework.
-● Adhere to RESTful principles in API design.
-● Implement comprehensive data validations for models.
-● Utilise Django ORM for database interactions.
-● Secure API endpoints with token-based authentication.
-● Follow PEP 8 style guidelines for Python code.
-● Document each API endpoint thoroughly.
-Deliverables
-● Complete source code in a public Git repository.
-● A README file with setup instructions and details on using the API endpoints.
-● A test suite demonstrating the functionality and reliability of the endpoints.
-Submission Guidelines
-● Host the code on a platform like GitHub or GitLab.
-● Ensure the README is clear for easy setup and testing.
-● Include instructions on how to run the test suite.
-This assignment tests your ability to create a functional Django-based system for vendor
-management, integrating aspects of data handling, API development, and basic performance
-metric calculations
+
+**Installation**
+python -m venv venv
+source venv/Scripts/activate
+pip install django
+pip install djangorestframework
+pip install -r requirements.txt
+python manage.py makemigrations 
+python manage.py migrate
+python manage.py createsuperuser 
+python manage.py runserver
+http://localhost:8000/vendors/  --for vendor list
+http://localhost:8000/admin  --for admin
+
+**Database** MySql is used for database
+Need to install xampp ,otherwise it will show error
