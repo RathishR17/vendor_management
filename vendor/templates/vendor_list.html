@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Vendor List</h1>
+    <ul>
+        {% for vendor in object_list %}
+            <li>{{ vendor.name }} - {{ vendor.email }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
